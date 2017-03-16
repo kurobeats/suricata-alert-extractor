@@ -1,2 +1,2 @@
-# suricata-alert-extractor
-A suricata alert extractor to be used with pfsense logs
+# Suricata Alert Extractor
+Just a suricata alert extractor to be used with pfsense log input.
