@@ -1,0 +1,19 @@
+{
+  "extractors": [
+    {
+      "title": "Suricata Alert",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "<%{INT:filterlog_digit}>%{DATA:pfsense_timestamp} %{WORD:application}\\[%{INT:pfsense_app_id}\\]: \\[%{DATA:suricata_signature_id}\\] %{DATA:suricata_description} \\[Classification: %{DATA:suricata_classification}\\] \\[Priority: %{INT:suricata_priority}\\] \\{%{WORD:suricata_protocol}\\} %{IP:suricata_src}:%{INT:suricata_src_port} -> %{IP:suricata_dst}:%{INT:suricata_dst_port}"
+      },
+      "condition_type": "regex",
+      "condition_value": "^<.*suricata.*Classification"
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
