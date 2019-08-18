@@ -13,7 +13,22 @@
       },
       "condition_type": "regex",
       "condition_value": "^<.*suricata.*Classification"
+    },
+    {
+      "title": "OPNsense Suricata extractor",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{SYSLOGHOST} %{SYSLOGPROG}\\:%{SPACE}\\[%{WORD:action}\\]%{SPACE}\\[%{DATA:suricata_signature_id}\\]%{SPACE}%{DATA:suricata_description}%{SPACE}(\\[Classification: )%{DATA:suricata_classification}\\]%{SPACE}(\\[Priority: )%{INT:suricata_priority}\\]%{SPACE}\\{%{URIPROTO:protocol}\\}%{SPACE}%{IPORHOST:src_host}\\:%{BASE10NUM:src_port}%{SPACE}\\-\\>%{SPACE}%{IPORHOST:dst_host}\\:%{BASE10NUM:dst_port}",
+        "named_captures_only": true
+      },
+      "condition_type": "regex",
+      "condition_value": ".*suricata.*Classification.*->"
     }
   ],
-  "version": "2.2.0-SNAPSHOT"
+  "version": "3.0.2"
 }
